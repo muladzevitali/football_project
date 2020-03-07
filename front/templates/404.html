@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Football Project</title>
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/404.css') }}">
+
+</head>
+<body>
+<div class="overlay"></div>
+<div class="terminal">
+    <h1>Error <span class="errorcode">404</span></h1>
+    <p class="output">The page you are looking for might have been removed, had its name changed or is temporarily
+        unavailable</p>
+    <p class="output">Please try <a href="{{ url_for('upload_file') }}">this link</a> or <a
+            href="{{ url_for('admin_page.do_admin_login') }}">this
+        link</a></p>
+    <p class="output">Good luck</p>
+</div>
+</body>
+</html>

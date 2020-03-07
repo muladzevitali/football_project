@@ -1,0 +1,9 @@
+Pillow
+numpy
+waitress
+torch
+requests
+wtforms
+opencv-python
+werkzeug
+flask

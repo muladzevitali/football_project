@@ -1,0 +1,71 @@
+{% extends "dashboard_root.html" %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+{#                        <h4 class="card-title">MATCH LOGOS TO COMPANY</h4>#}
+
+                    </div>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+
+                            {% for message in messages %}
+                                    <div class="alert alert-warning flash-messages">
+                                        <p class="text-danger">{{ message[1] }}</p>
+                                    </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <div class="card-body all-icons">
+                        <form action="/dashboard/logos/multiple" method="post" role="form" class="form-inline">
+                            <h3>
+                                    <span>MATCH THESE LOGOS TO A COMPANY:</span>
+                            </h3>
+                            <div class="form-group logos-select-multiple">
+                                <label for="inputState"></label>
+                                <select name="choose_box" class="form-control" id="inputState">
+                                    <option value="Choose an Option"></option>
+                                    {% for company in mapper %}
+                                        <option type="text" class="form-control"
+                                                name={{ company.name }}>{{ company.name  | replace("-"," ") }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="row">
+                                {% for i in range(0, images| length) %}
+                                    <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-3">
+                                        <div class="font-icon-detail logos-container nopad">
+                                            <span style="font-size: small;">{{ images[i].split('/')[0] }}</span>
+                                            <label class="image-checkbox">
+                                                <img src={{ url_for('download_file', folder = images[i].split('/')[0], filename=images[i].split('/')[1]) }} alt="Nature"
+                                                     class="img-responsive" width="100px" height="150px">
+                                                <input type="checkbox" name="{{ images[i] }}" value="checked"/>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="logos-buttons">
+                                <button type="submit"
+                                        class="btn btn-primary  btn-sm ">Submit
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ pagination.links }}
+    </div>
+</div>
+</div>
+
+{% endblock %}

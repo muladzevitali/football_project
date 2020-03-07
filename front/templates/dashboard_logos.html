@@ -1,0 +1,170 @@
+{% extends "dashboard_wrapper.html"%}
+{% block content %}
+<div class="col-sm-9">
+<h4>
+<small><b>Labels logos to companies: </b></small>
+</h4>
+<hr>
+<div class="row">
+<div class="col-xs-12">
+<!-- Admin part -->
+{% if is_authenticated %}
+<!--{{ form.csrf }}-->
+<div class="form-group">
+    <div class="container">
+        {% for i in range(0, images| length, 4) %}
+        <div class="row">
+            <div class="col-md-4" style="width:200px; height:250px;">
+                <div class="thumbnail" style="width:200px; height:250px;">
+                    <img src={{ url_for('download_file', filename=images[i]) }} alt="Nature"
+                    style="width:100px; height:150px;">
+                    <div class="caption">
+                        <form action="" method="post" role="form" class="form-inline">
+                            <div class="caption">
+                                <div class="form-group">
+                                    <label for="inputState"></label>
+                                    <select name={{ images[i] }} class="form-control" id="inputState"
+                                    style="width:100px;">
+                                    <option value=""></option>
+                                    {% for company in mapper %}
+                                    <option type="text" class="form-control"
+                                        name={{ company.name }}>{{ company.name  | replace("-"," ")}}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group-append center-block">
+                                <button type="submit"
+                                    class="btn btn-primary pull-left btn-sm ">Submit
+                                </button>
+                                <button type="submit" name="delete"
+                                class="btn btn-primary pull-right btn-sm"
+                                value={{ images[i] }}>Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% if i + 2 < images| length %}
+            <div class="col-md-4" style="width:200px; height:250px;">
+                <div class="thumbnail" style="width:200px; height:250px;">
+                    <img src={{ url_for('download_file', filename=images[i + 1]) }} alt="Nature"
+                    style="width:100px; height:150px;">
+                    <div class="caption">
+                        <form action="" method="post" role="form" class="form-inline">
+                            <div class="caption">
+                                <div class="form-group">
+                                    <label for="inputState"></label>
+                                    <select name={{ images[i + 1] }} class="form-control" id="inputState"
+                                    style="width:100px;">
+                                    <option value=""></option>
+                                    {% for company in mapper %}
+                                    <option type="text" class="form-control"
+                                        name={{ company.name }}>{{ company.name  | replace("-"," ")}}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group-append center-block">
+                                <button type="submit"
+                                    class="btn btn-primary pull-left btn-sm ">Submit
+                                </button>
+                                <button type="submit" name="delete"
+                                class="btn btn-primary pull-right btn-sm"
+                                value={{ images[i + 1] }}>Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if i + 3 < images| length %}
+            <div class="col-md-4" style="width:200px; height:250px;">
+                <div class="thumbnail" style="width:200px; height:250px;">
+                    <img src={{ url_for('download_file', filename=images[i + 2]) }} alt="Nature"
+                    style="width:100px; height:150px;">
+                    <div class="caption">
+                        <form action="" method="post" role="form" class="form-inline">
+                            <div class="caption">
+                                <div class="form-group">
+                                    <label for="inputState"></label>
+                                    <select name={{ images[i + 2] }} class="form-control" id="inputState"
+                                    style="width:100px;">
+                                    <option value=""></option>
+                                    {% for company in mapper %}
+                                    <option type="text" class="form-control"
+                                        name={{ company.name }}>{{ company.name  | replace("-"," ")}}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group-append center-block">
+                                <button type="submit"
+                                    class="btn btn-primary pull-left btn-sm ">Submit
+                                </button>
+                                <button type="submit" name="delete"
+                                class="btn btn-primary pull-right btn-sm"
+                                value={{ images[i + 2] }}>Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if i + 4 < images| length %}
+            <div class="col-md-4" style="width:200px; height:250px;">
+                <div class="thumbnail" style="width:200px; height:250px;">
+                    <img src={{ url_for('download_file', filename=images[i + 3]) }} alt="Nature"
+                    style="width:100px; height:150px;">
+                    <div class="caption">
+                        <form action="" method="post" role="form" class="form-inline">
+                            <div class="caption">
+                                <div class="form-group">
+                                    <label for="inputState"></label>
+                                    <select name={{ images[i + 3] }} class="form-control" id="inputState"
+                                    style="width:100px;">
+                                    <option value=""></option>
+                                    {% for company in mapper %}
+                                    <option type="text" class="form-control"
+                                        name={{ company.name }}>{{ company.name | replace("-"," ")}}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group-append center-block">
+                                <button type="submit"
+                                    class="btn btn-primary pull-left btn-sm ">Submit
+                                </button>
+                                <button type="submit" name="delete"
+                                class="btn btn-primary pull-right btn-sm"
+                                value={{ images[i + 3] }}>Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for message in messages %}
+{% if "Error" in message[1] %}
+<div class="alert alert-warning">
+    {{ message[1] }}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% endif %}
+<!-- End of admin part -->
+<br><br>
+</div>
+{% endblock %}

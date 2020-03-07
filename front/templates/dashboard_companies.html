@@ -1,0 +1,73 @@
+{% extends "dashboard_wrapper.html"%}
+{% block content %}
+<hr>
+<h4>
+    <small><b>Add new company:</b></small>
+</h4>
+<hr>
+<form action="" method="post" role="form">
+    <div class="form-group">
+        <div class="field">
+            <input type="username" class="form-control" id="name" name="name" placeholder="Company name">
+        </div>
+        <br>
+
+        <div class="field">
+            <input type="username" class="form-control" id="link" name="link"
+                    placeholder="Link to company website">
+        </div>
+
+        <br>
+    </div>
+    <button type="submit" class="btn btn-success" name="add">Add company</button>
+
+</form>
+<hr>
+<h4>
+    <small><b>Companies already in our database::</b></small>
+</h4>
+<div class="row">
+    <div class="col-xs-12">
+        {% for i in range(0, companies| length, 5) %}
+            <ul class="list-inline">
+
+                <li class="list-inline-item">{{ companies[i].name | replace("-"," ") }}</li>
+                {% if i + 1 < companies | length %}
+                    <li class="list-inline-item">{{ companies[i + 1].name | replace("-"," ") }}</li>
+                {% endif %}
+                {% if i + 2 < companies | length %}
+                    <li class="list-inline-item">{{ companies[i + 2].name | replace("-"," ") }}</li>
+                {% endif %}
+                {% if i + 3 < companies | length %}
+                    <li class="list-inline-item">{{ companies[i + 3].name | replace("-"," ") }}</li>
+                {% endif %}
+                {% if i + 4 < companies | length %}
+                    <li class="list-inline-item">{{ companies[i + 4].name | replace("-"," ") }}</li>
+                {% endif %}
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+<hr>
+<div class="row">
+
+
+    <br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+            {% for message in messages %}
+                {% if "Error" in message[1] %}
+                    <div class="alert alert-warning">
+                        {{ message[1] }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <!-- End of admin part -->
+    <br><br>
+
+
+</div>
+{% endblock %}

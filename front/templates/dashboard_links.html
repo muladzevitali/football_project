@@ -1,0 +1,79 @@
+{% extends "dashboard_wrapper.html"%}
+{% block content %}
+<hr>
+<h4>
+    <small><b>Change urls for:</b></small>
+</h4>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- Admin part -->
+        {% if is_authenticated %}
+
+            <form action="" method="post" role="form" class="form-inline">
+                <!--{{ form.csrf }}-->
+                <div class="form-group">
+                    <div class="container">
+
+                        {% for i in range(mapper | length) %}
+                            <div class="container">
+
+                                <div class="row">
+                                    <div class="col-xs-12 full-width">
+                                        <label class="control-label col-sm-2"
+                                                for={{ mapper[i].name }}>{{ mapper[i].name | replace("-"," ") }}:</label>
+                                        <div class="input-group">
+                                            <input style="width: 400px; margin-bottom: 4px; margin-right: 15px;"
+                                                    type="text" class="form-control"
+                                                    id={{ mapper[i].name }} name={{ mapper[i].name }}
+                                                    placeholder={{ mapper[i].current_link }}>
+                                            <span class="input-group-btn">
+
+                            <div class="input-group-append">
+                                <button type="submit" name="delete"
+                                        class="btn btn-primary pull-right btn-sm"
+                                        value={{ mapper[i].name }}>Delete
+                                </button>
+
+                                <button type="submit" name="reset_previous"
+                                        class="btn btn-primary pull-right btn-sm"
+                                        value={{ mapper[i].name }}>Reset Previous
+                                </button>
+                                <button type="submit"
+                                        class="btn btn-primary pull-right btn-sm">Submit</button>
+
+                            </div>
+                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                    <hr>
+
+                </div>
+            </form>
+            </div>
+
+            <br>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+
+                    {% for message in messages %}
+                        {% if "Error" in message[1] %}
+                            <div class="alert alert-warning">
+                                {{ message[1] }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+    <!-- End of admin part -->
+    <br><br>
+
+
+</div>
+{% endblock%}

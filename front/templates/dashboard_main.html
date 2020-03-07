@@ -1,0 +1,67 @@
+{% extends "dashboard_root.html" %}
+
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <form action="{{ url_for('admin_page.save_video_link') }}" method="POST">
+                        <div class="col-xs-12 full-width " style="width: 100%;">
+                            <div class="input-group">
+
+                            <label for="linktext" class="youtube-link-text">
+                                <p class="text-primary">Youtube video link:</p></label>
+                            <input type="text" class="form-control" name="linktext" id="linktext"
+                                   placeholder="{{ vidlink }}">
+                                <button type="submit" class="btn btn-primary youtube-link-button">Submit</button>
+                            </div></div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card ">
+                        <div class="card-header ">
+                            <h4 class="card-title">Classification Statistics</h4>
+                            <p class="card-category">Object Detection Performance</p>
+                        </div>
+                        <div class="card-body ">
+                            <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                        </div>
+                        <div class="card-footer ">
+                            <div class="legend">
+                                <i class="fa fa-circle text-info"></i> Classified
+                                <i class="fa fa-circle text-danger"></i> Detected
+                                <i class="fa fa-circle text-warning"></i> None
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card ">
+                        <div class="card-header ">
+                            <h4 class="card-title">Users Behavior</h4>
+                            <p class="card-category">24 Hours performance</p>
+                        </div>
+                        <div class="card-body ">
+                            <div id="chartHours" class="ct-chart"></div>
+                        </div>
+                        <div class="card-footer ">
+                            <div class="legend">
+                                <i class="fa fa-circle text-info"></i> Open
+                                <i class="fa fa-circle text-danger"></i> Click
+                                <i class="fa fa-circle text-warning"></i> Click Second Time
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="fa fa-history"></i> Updated 3 minutes ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

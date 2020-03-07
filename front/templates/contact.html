@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Football Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='fonts/css/all.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600|Roboto:300&amp;subset=latin-ext" rel="stylesheet" />
+</head>
+<body class="px-lg-4" style="background-color:#404040;">
+    <nav class="navbar navbar-expand-sm navbar-dark mb-2 mb-sm-4 mx-3 px-0">
+            <a href="{{url_for('index')}}" class="navbar-brand">
+                    <i class="fas fa-moon"></i> <b>VIDEO</b>LOGO
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                <ul class="navbar-nav">
+                        <li class="nav-item"><a href="{{url_for('index')}}" class="nav-link">Home</a></li>
+                        <li class="nav-item active"><a href="#" class="nav-link">Contact</a></li>
+                        <li class="nav-item"><a href="{{url_for('player_page.upload_file')}}" class="nav-link">Our Service</a></li>
+                </ul>
+            </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7 pt-lg-5">
+                <h1>Contact Form</h1>
+                <form class="contact100-form validate-form" action="" method="POST" enctype="multipart/form-data">
+                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                        <span class="label-input100">Full Name *</span>
+                        <input class="input100" type="text" name="name" placeholder="Enter your name">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required">
+                            <span class="label-input100">Email *</span>
+                            <input class="input100" type="text" name="email" placeholder="Enter email addess">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Phone in the format 5XXXXXXXX is required">
+                        <span class="label-input100">Phone Number *</span>
+                        <input class="input100" type="text" name="phone" placeholder="Enter phone number">
+                        <span class="focus-input100"></span>
+                    </div>
+    
+                    <div class="wrap-input100 validate-input" data-validate="Subject is required">
+                            <span class="label-input100">Subject *</span>
+                            <input class="input100" type="text" name="subject" placeholder="Enter Subject">
+                            <span class="focus-input100"></span>
+                        </div>
+    
+                    <div class="wrap-input100 validate-input" data-validate="Message is required" style="width:95%">
+                        <span class="label-input100">Message *</span>
+                        <textarea class="input100" name="message" placeholder="Type Message"></textarea>
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <input type="submit" value="Send" class="btn btn-warning" id="send" />
+                    {% if message_sent %}
+                    <div class="alert alert-success" style="display:inline-block">Message Sent!</div>
+                    {% endif %}
+                </form>
+            </div>
+
+            <div class="col-md-5 pt-lg-5">
+                <div id="contactinfo" class="ml-lg-5 p-4">
+                    <h3>Contact Information</h3>
+                    <div class="infobit">
+                        <div class="icon"><i class="fas fa-at"></i></div>
+                        <div class="wrapper">
+                            <span class="type">EMAIL ADDRESS</span><br>
+                            <span class="text"><a target="_blank" href="mailto:info@player.ge">info@player.ge</a></span>
+                        </div>
+                    </div>
+                    <div class="infobit">
+                            <div class="icon">
+                                <img src="{{ url_for('static', filename='images/addressicon.svg') }}" height="16px">
+                            </div>
+                            <div class="wrapper">
+                                <span class="type">ADDRESS</span><br>
+                                <span class="text"><a target="_blank" href="https://goo.gl/maps/RWjXvEXnJ8G2">Grunewaldstraße 21, 10823 Berlin, Germany</a></span>
+                            </div>
+                    </div>
+
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css" />
+    <script src="{{ url_for('static', filename='js/jquery-3.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src='{{ url_for('static', filename='js/if-b4-breakpoint.min.js') }}'></script>
+    <!--<script src="../static/user.js"></script>-->
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk9Ve6O3bs5OgqltaTTzSoAfbcQF3zMnc&callback=initMap">
+    </script>
+            
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}" type="text/css" />
+</body>
+</html>

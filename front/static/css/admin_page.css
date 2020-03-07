@@ -1,0 +1,137 @@
+.new-dropdown {
+    left: 6% !important;
+    top: 100% !important;
+    width: 89%;
+}
+
+.company-link-input {
+    width: 35%;
+    margin-bottom: 4px;
+    margin-right: 15px
+}
+
+.company-edit-input {
+    margin-left: 1%;
+    margin-bottom: 5px;
+}
+
+.company-name {
+    padding: 0 !important;
+    display: block !important;
+}
+
+.company-edit-buttons {
+    margin-right: 5px;
+}
+
+.logos-image img {
+    width: 150px;
+    height: 150px;
+
+}
+
+.logos-image:hover {
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+.logos-container {
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
+}
+
+.logos-choose-select select {
+    width: 82px !important;
+    height: 25px !important;
+    margin-left: 28px !important;
+    margin-top: 5px !important;
+    border-color: aqua;
+    font-size: 7px;
+}
+
+.logos-choose-select option {
+    font-size: small;
+}
+
+.logos-buttons {
+    padding-top: 10px;
+    display: flex;
+    vertical-align: middle;
+    margin: auto;
+
+
+}
+
+.logos-buttons button {
+    margin-right: 1px;
+    width: 53px;
+    min-height: 10px;
+    font-size: small;
+    padding-left: 5px;
+
+}
+
+.image-checkbox {
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 4px solid transparent;
+    margin-bottom: 0;
+    outline: 0;
+}
+
+.image-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+
+.nopad {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+}
+
+.image-checkbox-checked {
+    border-color: #4783B0;
+}
+
+.image-checkbox .fa {
+    position: absolute;
+    color: #4A79A3;
+    background-color: #fff;
+    padding: 10px;
+    top: 0;
+    right: 0;
+}
+
+.image-checkbox-checked .fa {
+    display: block !important;
+}
+
+.logos-select-multiple {
+    display: flex;
+    vertical-align: middle;
+    margin: 0 0 0 10%;
+}
+
+.flash-messages {
+    margin-left: auto;
+    width: 45%;
+}
+
+.login-container {
+    margin: 10% auto;
+
+}
+
+.youtube-link-text {
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-left: 15px;
+}
+
+.youtube-link-button {
+    height: 41px;
+    margin-left: 2%;
+}

@@ -1,0 +1,58 @@
+{% extends "dashboard_root.html" %}
+
+{% block content %}
+    <div class="content" style="width: 100%;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="" method="post" role="form" class="form-inline">
+                        <!--{{ form.csrf }}-->
+                        <div class="form-group" style="width: 100%;">
+                            <div class="container">
+
+                                {% for i in range(companies | length) %}
+                                    <div class="container company-edit-input">
+
+                                        <div class="row">
+                                            <div class="col-xs-12 full-width " style="width: 100%;">
+
+                                                <div class="input-group">
+                                                    <label class="control-label col-sm-2 company-name"
+                                                       for={{ companies[i].name }}>{{ companies[i].name | replace("-"," ") }}:</label>
+                                                    <input class="company-link-input"
+                                                           type="text" class="form-control"
+                                                           id={{ companies[i].name }} name={{ companies[i].name }}
+                                                           placeholder={{ companies[i].current_link }}>
+
+
+                    <button type="submit"
+                            class="btn btn-primary pull-right btn-sm company-edit-buttons">Submit</button>
+                    <button type="submit" name="reset_previous"
+                            class="btn btn-primary pull-right btn-sm company-edit-buttons"
+                            value={{ companies[i].name }}>Reset Previous
+                    </button>
+
+                                                                        <button type="submit" name="delete"
+                            class="btn btn-primary pull-right btn-sm company-edit-buttons"
+                            value={{ companies[i].name }}>Delete
+                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                            <hr>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="d-flex justify-content-center">
+    {{ pagination.links }}
+    </div>
+{% endblock %}

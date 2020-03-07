@@ -1,0 +1,30 @@
+{% extends "dashboard_root.html" %}
+
+{% block content %}
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form action="/dashboard/companies/add" method="post" role="form">
+                            <div class="form-group">
+                                <div class="field">
+                                    <input class="form-control" id="name" name="name" placeholder="Company name"
+                                           type="username">
+                                </div>
+                                <br>
+
+                                <div class="field">
+                                    <input class="form-control" id="link" name="link" placeholder="Link to company website"
+                                           type="username">
+                                </div>
+
+                                <br>
+                            </div>
+                            <button class="btn btn-success" name="add" type="submit">Add company</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

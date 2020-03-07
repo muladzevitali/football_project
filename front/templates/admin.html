@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Football project: login page</title>
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+
+<!-- Admin part -->
+{% if is_authenticated %}
+
+<div class="container">
+    <h2>Change urls for:</h2>
+    <form action="" method="post" role="form">
+        <!--{{ form.csrf }}-->
+        <div class="form-group">
+            {% for team in mapper %}
+            <div>
+                <label for={{team.name}}>{{ team.name | replace("-"," ") }}:</label>
+                <input type="text" class="form-control" id={{team.name}} name={{team.name}} placeholder={{team.current_link}}>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <button type="submit" name="reset_previous" value={{team.name}} class="btn btn-primary">Reset Previous
+                </button>
+
+            </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-success">Submit multiple teams</button>
+        <button type="submit" name="reset_default" class="btn btn-success">Reset Defaults</button>
+        <button type="submit" name="logout" class="btn btn-success">Log out</button>
+
+    </form>
+</div>
+
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
+{% for message in messages %}
+{% if "Error" in message[1] %}
+<div class="alert alert-warning">
+    {{ message[1] }}
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% endif %}
+<!-- End of admin part -->
+
+</body>
+</html>

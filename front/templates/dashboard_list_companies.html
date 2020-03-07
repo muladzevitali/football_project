@@ -1,0 +1,43 @@
+{% extends "dashboard_root.html" %}
+
+{% block content %}
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card strpied-tabled-with-hover">
+                            <div class="card-header ">
+                                <h4 class="card-title">Companies</h4>
+                                <p class="card-category">The companies already in our project</p>
+                            </div>
+                            <div class="card-body table-full-width table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>URL</th>
+
+                                    </thead>
+                                    <tbody>
+                                    {% for i in range(0, companies| length) %}
+
+                                    <tr>
+                                        <td>{{ i + 1 }}</td>
+                                        <td>{{ companies[i].name | replace("-"," ") }}</td>
+                                        <td>
+                                            <a href="{{ companies[i].current_link }}" target="_blank" title="{{ companies[i].current_link }}">Click Here</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="d-flex justify-content-center">
+    {{ pagination.links }}
+    </div>
+{% endblock %}

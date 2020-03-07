@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Football project: change links</title>
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='css/admin_page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="col-md-4 login-container">
+    <h2 style="text-align: center;">Please login</h2>
+    <br>
+
+    <form action="" method="post" role="form">
+        <!--{{ form.csrf }}-->
+        <div class="form-group">
+            <div class="field">
+                <input type="username" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+            <br>
+
+            <div class="field">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+
+            <br>
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary" name="login">Log in</button>
+        </div>
+
+
+    </form>
+    <br>
+    {% if error %}
+        <div class="alert alert-warning">
+            {{ error }}
+        </div>
+    {% endif %}
+</div>
+<!-- End of login part -->
+</body>
+</html>
